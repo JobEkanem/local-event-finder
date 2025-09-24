@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Local Event Finder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📅 Local Event Finder</h1>
+    <p>Discover, add and save the best events in your city!</p>
+  </header>
+
+  <main class="container">
+
+    <!-- Add Event -->
+    <section class="add-event-section card">
+      <h2>Add an Event</h2>
+      <form id="addEventForm" class="add-form" novalidate>
+        <div class="form-row">
+          <label for="eventName">Event name</label>
+          <input id="eventName" name="name" type="text" placeholder="e.g. Live Jazz Night" required />
+        </div>
+
+        <div class="form-row">
+          <label for="eventLocation">Location</label>
+          <input id="eventLocation" name="location" type="text" placeholder="e.g. Downtown Club" required />
+        </div>
+
+        <div class="form-row">
+          <label for="eventDate">Date</label>
+          <input id="eventDate" name="date" type="date" required />
+        </div>
+
+        <div class="form-row">
+          <label for="eventCategorySelect">Category</label>
+          <select id="eventCategorySelect" name="category">
+            <!-- populated dynamically -->
+          </select>
+        </div>
+
+        <div class="form-row hidden" id="newCategoryRow">
+          <label for="newCategoryInput">New category</label>
+          <input id="newCategoryInput" type="text" placeholder="e.g. Arts" />
+        </div>
+
+        <div class="form-row">
+          <label for="eventDescription">Description (optional)</label>
+          <textarea id="eventDescription" rows="2" placeholder="Short event description"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button id="addEventBtn" type="submit">➕ Add Event</button>
+          <button id="resetBtn" type="button" class="secondary">Reset</button>
+        </div>
+
+        <div id="formMessage" class="form-message" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <!-- Filters -->
+    <section class="filter-section card">
+      <h2>Search & Filter</h2>
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Search by name or location..." />
+        <select id="categoryFilter">
+          <!-- populated dynamically -->
+        </select>
+        <input type="date" id="dateFilter" />
+        <button id="filterBtn">🔍 Filter</button>
+        <button id="clearFilterBtn" class="secondary">Clear</button>
+      </div>
+    </section>
+
+    <!-- Event Cards -->
+    <section class="events-section card">
+      <h2>Upcoming Events</h2>
+      <div id="eventContainer" class="event-grid" aria-live="polite"></div>
+    </section>
+
+    <!-- Bookmarked Events -->
+    <section class="bookmarks card">
+      <h2>⭐ My Bookmarked Events</h2>
+      <div id="bookmarkContainer">No bookmarks yet.</div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <small>Local Event Finder — static app that saves data to your browser (localStorage).</small>
+  </footer>
+
+  <script defer src="script.js"></script>
+</body>
+</html>
